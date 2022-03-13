@@ -21,11 +21,8 @@ public class ProfileTest {
 
     @Test
     public void mathAnswerFalseWhenMustMatchCriteriaNotMet() {
-        Answer profileAnswer = new Answer(question, Boolean.FALSE);
-        profile.add(profileAnswer);
-        Answer criteriaAnswer = new Answer(question, Boolean.TRUE);
-        Criterion criterion = new Criterion(criteriaAnswer, Weight.MustMatch);
-        criteria.add(criterion);
+        profile.add(new Answer(question, Boolean.FALSE));
+        criteria.add(new Criterion(new Answer(question, Boolean.TRUE), Weight.MustMatch));
 
         boolean matches = profile.matches(criteria);
 
@@ -34,11 +31,8 @@ public class ProfileTest {
 
     @Test
     public void matchAnswersTrueForAnyDontCareCriteria() {
-        Answer profileAnswer = new Answer(question, Boolean.FALSE);
-        profile.add(profileAnswer);
-        Answer criteriaAnswer = new Answer(question, Boolean.TRUE);
-        Criterion criterion = new Criterion(criteriaAnswer, Weight.DontCare);
-        criteria.add(criterion);
+        profile.add(new Answer(question, Boolean.FALSE));
+        criteria.add(new Criterion(new Answer(question, Boolean.TRUE), Weight.DontCare));
 
         boolean matches = profile.matches(criteria);
 
