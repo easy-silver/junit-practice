@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import java.util.Arrays;
 
-import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.assertThat;
 
 public class AssertTest {
@@ -16,6 +16,18 @@ public class AssertTest {
 
     @Test
     public void equalToFail2() {
-        assertThat(Arrays.asList(new String[]{"a"}), equalTo(Arrays.asList(new String[]{"a"})));
+        assertThat(Arrays.asList("a"), equalTo(Arrays.asList("a")));
+    }
+
+    @Test
+    public void isTest() {
+        String name = "my big fat acct";
+        assertThat(name, is(equalTo("my big fat acct")));
+    }
+
+    @Test
+    public void notTest() {
+        String name = "my big fat acct";
+        assertThat(name, not("plunderings"));
     }
 }
