@@ -30,4 +30,11 @@ public class AssertTest {
         String name = "my big fat acct";
         assertThat(name, not("plunderings"));
     }
+
+    @Test
+    public void nullTest() {
+        String name = "my big fat acct";
+        assertThat(name, is(not(nullValue())));
+        assertThat(name, is(notNullValue()));
+    }
 }
